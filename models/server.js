@@ -135,32 +135,19 @@ class Server {
 
     
     middlewares() {
-        //CORS
-        //Evitar errores por Cors Domain Access
-        //Usado para evitar errores.
         this.app.use(cors({
             origin: ['http://localhost:8100', 'https://base-movil-production.up.railway.app'],
             methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
             allowedHeaders: ['Content-Type', 'Authorization']
         }));
 
+        // RESPUESTA A PRE-FLIGHT OPTIONS
+        this.app.options('*', cors());
 
-        //Lectura y Parseo del body
-        //JSON        
-        //JSON (JavaScript Object Notation)
-        //es un formato ligero de intercambio de datos.
-        //JSON es de fácil lectura y escritura para los usuarios.
-        //JSON es fácil de analizar y generar por parte de las máquinas.
-        //JSON se basa en un subconjunto del lenguaje de programación JavaScript,
-        //Estándar ECMA-262 3a Edición - Diciembre de 1999.
         this.app.use(express.json());
-
-
-        //Directorio publico
         this.app.use(express.static('public'));
-
-
     }
+
     
 
     listen() {
