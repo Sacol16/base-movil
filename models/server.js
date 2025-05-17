@@ -138,7 +138,7 @@ class Server {
         this.app.use(cors({
             origin: ['http://localhost:8100', 'https://base-movil-production.up.railway.app'],
             methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-            allowedHeaders: ['Content-Type', 'Authorization']
+            allowedHeaders: ['Content-Type', 'Authorization', 'x-token']
         }));
 
         // RESPUESTA A PRE-FLIGHT OPTIONS
