@@ -138,7 +138,12 @@ class Server {
         //CORS
         //Evitar errores por Cors Domain Access
         //Usado para evitar errores.
-        this.app.use(cors());
+        this.app.use(cors({
+            origin: ['http://localhost:8100', 'https://base-movil-production.up.railway.app'],
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Content-Type', 'Authorization']
+        }));
+
 
         //Lectura y Parseo del body
         //JSON        
